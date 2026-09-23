@@ -2,10 +2,38 @@
 modules:
   version: 0.6.53
   modules:
+  - name: data_foundation
+    location:
+      path: modules/bootcamp/data_foundation
+      hash: f9d0ccb1
+    build_variables:
+    - key: icapi_ds_external_id
+      value: ds_icapi
+      is_selected: true
+      location: modules/bootcamp
+    - key: icapi_space_name
+      value: icapi_dm_space
+      is_selected: true
+      location: modules/bootcamp
+    - key: data_developer_source_id
+      value: ${DATA_DEVELOPER_SOURCE_ID}
+      is_selected: true
+      location: modules/bootcamp/data_foundation
+    resources:
+      auth:
+      - identifier:
+          name: data_developer
+        source:
+          path: /workspaces/ice-cream-dataops/ice-cream-dataops/modules/bootcamp/data_foundation/auth/data_developer.Group.yaml
+          hash: 51c4d4a4
+        kind: Group
+    warning_count: 0
+    status: Success
+    iteration: 1
   - name: oee
     location:
       path: modules/bootcamp/use_cases/oee
-      hash: 449dd73f
+      hash: 41197e49
     build_variables:
     - key: icapi_ds_external_id
       value: ds_icapi
@@ -58,12 +86,6 @@ modules:
           hash: 505308c0
         kind: DataSet
       functions:
-      - identifier:
-          externalId: oee_timeseries
-        source:
-          path: /workspaces/ice-cream-dataops/ice-cream-dataops/modules/bootcamp/use_cases/oee/functions/functions.Function.yaml
-          hash: b4795e39
-        kind: Function
       - identifier:
           functionExternalId: oee_timeseries
           name: Run calculations every 5 minutes for last hour of data
@@ -259,33 +281,5 @@ modules:
           hash: e476eb8a
         kind: Schedule
     warning_count: 2
-    status: Success
-    iteration: 1
-  - name: data_foundation
-    location:
-      path: modules/bootcamp/data_foundation
-      hash: f9d0ccb1
-    build_variables:
-    - key: icapi_ds_external_id
-      value: ds_icapi
-      is_selected: true
-      location: modules/bootcamp
-    - key: icapi_space_name
-      value: icapi_dm_space
-      is_selected: true
-      location: modules/bootcamp
-    - key: data_developer_source_id
-      value: ${DATA_DEVELOPER_SOURCE_ID}
-      is_selected: true
-      location: modules/bootcamp/data_foundation
-    resources:
-      auth:
-      - identifier:
-          name: data_developer
-        source:
-          path: /workspaces/ice-cream-dataops/ice-cream-dataops/modules/bootcamp/data_foundation/auth/data_developer.Group.yaml
-          hash: 51c4d4a4
-        kind: Group
-    warning_count: 0
     status: Success
     iteration: 1

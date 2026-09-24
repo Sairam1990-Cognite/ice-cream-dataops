@@ -6,7 +6,7 @@ workflowDefinition:
     type: transformation
     parameters:
       transformation:
-        externalId: create_asset_hierarchy
+      externalId: create_asset_hierarchy
     retries: 3
     timeout: 3600
     onFailure: abortWorkflow
@@ -34,7 +34,7 @@ workflowDefinition:
     dependsOn:
       - externalId: contextualize_ts_assets_task
 
- - externalId: oee_timeseries_task
+  - externalId: oee_timeseries_task
     type: function
     parameters:
       function:
